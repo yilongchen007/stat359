@@ -123,6 +123,8 @@ for epoch in range(EPOCHS):
         neg_logits = torch.bmm(
             negative_vectors, center_vectors.unsqueeze(2)
         ).squeeze(2)
+
+        neg_logits = neg_logits.view(-1) #here
         neg_labels = torch.zeros_like(neg_logits)
         neg_loss = criterion(neg_logits, neg_labels)
 
